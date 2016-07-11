@@ -3,8 +3,8 @@
   <div class="media">
     <div class="media-body">
       <h4 class="media-heading">
-        <% if conversation.originator.name != current_user.name %>
-          <%= conversation.originator.name %> <br>
+        <% if !conversation.participants.find { |p| p != current_user }.nil? %>
+          <%= conversation.participants.find { |p| p != current_user }.name %> <br>
         <% else %>
           You <br>
         <% end %>
@@ -20,10 +20,10 @@
     <div class="media">
     <div class="media-body">
       <h4 class="media-heading">
-        <% if conversation.originator.name != current_user.name %>
-         <b> <font color="blue"> <%= conversation.originator.name %> </font> </b> <br>
+        <% if !conversation.participants.find { |p| p != current_user }.nil? %>
+                   <b> <font color="blue">  <%= conversation.participants.find { |p| p != current_user }.name %> <br> </font> </b> <br>
         <% else %>
-          You <br>
+          <b> <font color="blue"> You <br> </font> </b> <br>
         <% end %>
         <small><b>Date: </b><%=  conversation.messages.last.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
       </h4>

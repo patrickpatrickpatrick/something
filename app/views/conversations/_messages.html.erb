@@ -8,6 +8,9 @@
           <% else %>
             You <br>
           <% end %>
+          <% if User.find(message.sender.id).trainer %>
+              <font color:"red"> TRAINER </font>
+          <% end %>
           <small><b>Date: </b><%=  message.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
         </h4>
         <%= message.body %>

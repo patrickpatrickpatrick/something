@@ -4,7 +4,7 @@
   <div class="col-sm-4">
     <div class="panel panel-default">
       <div class="panel-body">
-        <%= render partial: 'conversations/conversation', collection: mailbox.inbox %>
+        <%= render partial: 'conversations/conversation', collection: Mailboxer::Conversation.participant(current_user) %>
       </div>
     </div>
   </div>

@@ -9,6 +9,10 @@ class UserController < ApplicationController
     @user = User.new
   end
 
+  def self.all_except(user)
+    where.not(id: user)
+  end
+
   def create
     @user = User.new(params[:user])
     if @user.save

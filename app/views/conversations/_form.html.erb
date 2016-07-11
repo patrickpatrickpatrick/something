@@ -1,7 +1,8 @@
 <%= form_for :conversation, url: :conversations, html: { class: "" } do |f| %>
     <div class="form-group">
       <%= f.label :recipients %>
-      <%= f.select(:recipients, User.all.collect {|p| [ p.name, p.id ] }, {}, { multiple: true , class: "chosen-select form-control" })%>
+      <% @users = User.all.where("id != ?", current_user.id) %>
+      <%= f.select(:recipients, @users.all.collect {|p| [ p.name, p.id ] }, {}, { multiple: true , class: "chosen-select form-control" })%>
     </div>
     <div class="form-group">
       <%= f.hidden_field :subject, :value => "default" %>
