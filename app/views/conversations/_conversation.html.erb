@@ -1,0 +1,35 @@
+<% if !conversation.is_unread?(current_user) %>
+
+  <div class="media">
+    <div class="media-body">
+      <h4 class="media-heading">
+        <% if conversation.originator.name != current_user.name %>
+          <%= conversation.originator.name %> <br>
+        <% else %>
+          You <br>
+        <% end %>
+        <small><b>Date: </b><%=  conversation.messages.last.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
+      </h4>
+      <%= truncate conversation.messages.last.body, length: 145 %>
+      <%= link_to "View", conversation_path(conversation)  %>
+    </div>
+  </div>
+
+<% else %>
+
+    <div class="media">
+    <div class="media-body">
+      <h4 class="media-heading">
+        <% if conversation.originator.name != current_user.name %>
+         <b> <font color="blue"> <%= conversation.originator.name %> </font> </b> <br>
+        <% else %>
+          You <br>
+        <% end %>
+        <small><b>Date: </b><%=  conversation.messages.last.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
+      </h4>
+      <%= truncate conversation.messages.last.body, length: 145 %>
+      <%= link_to "View", conversation_path(conversation)  %>
+    </div>
+  </div>
+
+<% end %>
