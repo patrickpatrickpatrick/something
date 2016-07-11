@@ -1,9 +1,10 @@
-<div class="row">
-  <div class="spacer"></div>
-  <div class="col-md-12">
-    <%= link_to "Send New Message", mailbox_inbox_url, class: "btn btn-success" %>
+
+  <div class="row">
     <div class="spacer"></div>
-  </div>
+    <div class="col-md-12">
+      <%= link_to "Send New Message", mailbox_inbox_url, class: "btn btn-success" %>
+      <div class="spacer"></div>
+    </div>
 
   <div class="col-sm-4">
     <div class="panel panel-default">
@@ -19,13 +20,12 @@
         <%= render partial: 'messages' %>
       </div>
       <div class="panel-footer">
-        <!-- Reply Form -->
-        <%= form_for :message, url: reply_conversation_path(@conversation) do |f| %>
-            <div class="form-group">
-              <%= f.text_area :body, placeholder: "Reply Message", rows: 4, class: "form-control" %>
-            </div>
-            <%= f.submit "Reply", class: 'btn btn-danger pull-right' %>
-        <% end %>
+          <%= form_for :message, url: reply_conversation_path(@conversation) do |f| %>
+              <div class="form-group">
+                <%= f.text_area :body, placeholder: "Reply Message", rows: 4, class: "form-control" %>
+              </div>
+              <%= f.submit "Reply", class: 'btn btn-danger pull-right' %>
+          <% end %>
         <div class="clearfix"></div>
       </div>
     </div>

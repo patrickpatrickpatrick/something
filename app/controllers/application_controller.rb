@@ -25,7 +25,13 @@ class ApplicationController < ActionController::Base
   end
 
   def conversation
-    @conversation ||= mailbox.conversations.find(params[:id])
+
+    if current_user.role != "admin"
+      @conversation ||= mailbox.conversations.find(params[:id])
+    else
+      @conversation ||= Mailboxer::Conversation.find(params[:id])
+    end
+
   end
 
   protected

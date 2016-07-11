@@ -31,6 +31,11 @@ class ConversationsController < ApplicationController
     redirect_to conversation_path(conversation)
   end
 
+  def trash
+    conversation.receipts_for(current_user).update_all(:deleted => true)
+    redirect_to mailbox_inbox_path
+  end
+
 
   private
 

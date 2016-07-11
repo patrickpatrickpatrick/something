@@ -12,6 +12,9 @@
       </h4>
       <%= truncate conversation.messages.last.body, length: 145 %>
       <%= link_to "View", conversation_path(conversation)  %>
+      <% if current_user.role == "admin" %>
+        <%= link_to 'Move to trash', trash_conversation_path(conversation), class: 'btn btn-danger', method: :post %>
+      <% end %>
     </div>
   </div>
 

@@ -3,10 +3,22 @@
 	<% User.all.each do |user| %>
       	<li><%= user.name %></li>
     	<%= form_for(user) do |f| %>
-    		<%= f.check_box :trainer %>
-    	<%= f.submit 'Submit!' %>
-    	<%= link_to "Delete", user, method: :delete %>
+        <%= f.label :trainer do %>
+          <%= f.check_box :trainer %>
+          Trainer?
+        <% end %>
+      <%= f.select :role, ['admin', 'user']%>
+    	<%= f.submit 'Save Changed Status Of User' %>
+    	<%= link_to "Delete User", user, method: :delete %>
     	<% end %>
     <% end %>
    </div>
 </div>
+
+  <div class="col-sm-4">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= render partial: 'conversations/conversation', collection: Mailboxer::Conversation.all %>
+      </div>
+    </div>
+  </div>
