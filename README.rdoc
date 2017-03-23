@@ -1,3 +1,1 @@
-Hi,
-
-DB contains a admin, user and trainer seed.
+This was a programming test for a start-up I applied to.
